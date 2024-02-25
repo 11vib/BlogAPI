@@ -69,3 +69,14 @@ export const deleteUser = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+export const getUserById = async (req, res) => {
+    try {
+      const userId = req.params.id; 
+      const users = await blogModel.find({ userId });
+      res.json(users);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
