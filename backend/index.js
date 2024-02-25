@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import blogRoutes from '../Node_API/routes/blogRoutes.js';
-import authorRoutes from '../Node_API/routes/authorRoutes.js';
+import blogRoutes from '../backend/routes/blogRoutes.js';
+import authorRoutes from '../backend/routes/authorRoutes.js';
 
 dotenv.config();
 
