@@ -42,4 +42,30 @@ export const login = async(req,res)=>{
         console.error(error);
         res.status(500).json({ error: "Authentication failed" });
       }
-}
+};
+
+export const getAllUsers = async (req,res) => {
+    try{
+        const users = await AuthorModel.find();
+        res.json(users);
+    }catch(e){
+        console.error(e);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id; 
+        const user = await AuthorModel.findByIdAndDelete(userId);
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.json({ message: 'User deleted successfully' });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
